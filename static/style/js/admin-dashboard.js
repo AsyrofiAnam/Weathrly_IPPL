@@ -340,8 +340,10 @@ document.getElementById('logout-btn').addEventListener('click', () => {
     auth.signOut().then(() => window.location.href = '/');
 });
 
-function closeModal(modalId) {
+window.closeModal = function (modalId) {
     const modal = document.getElementById(modalId);
+    if (!modal) return; // Pencegahan error jika modal tidak ditemukan
+
     modal.classList.add('modal-closing');
     setTimeout(() => {
         modal.classList.add('hidden');

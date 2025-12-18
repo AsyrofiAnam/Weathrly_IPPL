@@ -78,8 +78,8 @@ exports.handler = async (event, context) => {
     payer_email: user.email,
     description: 'Langganan Weathrly Premium (1 Bulan)',
     // [PERUBAHAN DI SINI] Arahkan ke /slug, bukan /dashboard
-    success_redirect_url: `https://weahtrly-ippl.netlify.app/${userSlug}?payment=success`,
-    failure_redirect_url: `https://weahtrly-ippl.netlify.app/${userSlug}?payment=failed`,
+    success_redirect_url: `https://weathrly-ippl.netlify.app/${userSlug}?payment=success`,
+    failure_redirect_url: `https://weathrly-ippl.netlify.app/${userSlug}?payment=failed`,
   };
 
   // 6. Kirim Permintaan ke Xendit (Tidak Berubah)
