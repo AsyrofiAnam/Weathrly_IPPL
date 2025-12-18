@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="id" class="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weathrly</title>
+    <link rel="icon" href="../static/style/image/logo.png" type="image/png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <link rel="stylesheet" href="../static/style/css/index.css">
+
+</head>
+
+<body class="transition-colors duration-300">
+
+    <div id="loading-overlay" class="fixed inset-0 flex items-center justify-center transition-opacity duration-500"
+        style="background-color: var(--body-bg);">
+        <div class="container-loader">
+            <div class="cloud-loader front-loader">
+                <span class="left-front-loader"></span>
+                <span class="right-front-loader"></span>
+            </div>
+            <span class="sun-loader sunshine-loader"></span>
+            <span class="sun-loader"></span>
+            <div class="cloud-loader back-loader">
+                <span class="left-back-loader"></span>
+                <span class="right-back-loader"></span>
+            </div>
+        </div>
+    </div>
+
+
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 p-4">
+        <div class="navbar-container max-w-7xl mx-auto px-4 sm:px-6 py-3 rounded-2xl flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2">
+                <img src="../static/style/image/logo.png" alt="Logo Weathrly"
+                    class="w-12 h-10 rounded-full object-cover">
+                <span class="logo-text text-2xl font-extrabold">Weathrly</span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-4">
+                <a href="#fitur" class="nav-link text-md font-medium">Fitur</a>
+                <a href="#cara_kerja" class="nav-link text-md font-medium">Cara Kerja</a>
+                <a href="#harga" class="nav-link text-md font-medium">Harga</a>
+                <a href="#tentang" class="nav-link text-md font-medium">Tentang</a>
+                <a href="#" class="btn-cta text-md text-white font-medium px-5 py-2 rounded-lg">Coba Weathrly</a>
+            </div>
+
+            <div class="flex items-center gap-2 sm:gap-4">
+                <label class="switch hidden md:inline-block">
+                    <input id="theme-toggle-desktop" type="checkbox" />
+                    <div class="slider round">
+                        <div class="sun-moon">
+                            <svg id="moon-dot-1" class="moon-dot" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="50"></circle>
+                            </svg>
+                            <svg id="moon-dot-2" class="moon-dot" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="50"></circle>
+                            </svg>
+                            <svg id="moon-dot-3" class="moon-dot" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="50"></circle>
+                            </svg>
+                            <svg id="light-ray-1" class="light-ray" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="50"></circle>
+                            </svg>
+                            <svg id="light-ray-2" class="light-ray" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="50"></circle>
+                            </svg>
+                            <svg id="light-ray-3" class="light-ray" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="50"></circle>
+                            </svg>
+                            <svg id="cloud-1" class="cloud-dark" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="50"></circle>
+                            </svg>
+                            <svg id="cloud-2" class="cloud-dark" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="50"></circle>
+                            </svg>
+                            <svg id="cloud-3" class="cloud-dark" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="50"></circle>
+                            </svg>
+                            <svg id="cloud-4" class="cloud-light" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="50"></circle>
+                            </svg>
+                            <svg id="cloud-5" class="cloud-light" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="50"></circle>
+                            </svg>
+                            <svg id="cloud-6" class="cloud-light" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="50"></circle>
+                            </svg>
+                        </div>
+                        <div class="stars">
+                            <svg id="star-1" class="star" viewBox="0 0 20 20">
+                                <path
+                                    d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                </path>
+                            </svg>
+                            <svg id="star-2" class="star" viewBox="0 0 20 20">
+                                <path
+                                    d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                </path>
+                            </svg>
+                            <svg id="star-3" class="star" viewBox="0 0 20 20">
+                                <path
+                                    d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                </path>
+                            </svg>
+                            <svg id="star-4" class="star" viewBox="0 0 20 20">
+                                <path
+                                    d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                </label>
+
+                <button id="menu-toggle" class="md:hidden p-2 rounded-md focus:outline-none">
+                    <span class="sr-only">Buka menu utama</span>
+                    <svg id="icon-menu" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor" style="color: var(--icon-color);">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg id="icon-close" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor" style="color: var(--icon-color);">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="md:hidden max-w-7xl mx-auto mt-2 rounded-2xl">
+            <div class="mobile-menu p-6 flex flex-col items-center gap-6 rounded-2xl">
+                <a href="#fitur" class="nav-link text-lg">Fitur</a>
+                <a href="#cara_kerja" class="nav-link text-lg">Cara Kerja</a>
+                <a href="#harga" class="nav-link text-lg">Harga</a>
+                <a href="#tentang" class="nav-link text-lg">Tentang</a>
+                <a href="#" class="btn-cta text-lg text-white font-medium px-8 py-3 rounded-lg mt-4">Coba Weathrly</a>
+                <div class="flex w-full items-center justify-between border-t border-[var(--card-border)] pt-4">
+                    <span class="text-sm font-medium text-left" style="color: var(--text-color-secondary);">
+                        Mode Tampilan
+                    </span>
+                    <label class="switch">
+                        <input id="theme-toggle-mobile" type="checkbox" />
+                        <div class="slider round">
+                            <div class="sun-moon">
+                                <svg id="moon-dot-1" class="moon-dot" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="moon-dot-2" class="moon-dot" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="moon-dot-3" class="moon-dot" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="light-ray-1" class="light-ray" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="light-ray-2" class="light-ray" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="light-ray-3" class="light-ray" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-1" class="cloud-dark" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-2" class="cloud-dark" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-3" class="cloud-dark" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-4" class="cloud-light" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-5" class="cloud-light" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-6" class="cloud-light" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                            </div>
+                            <div class="stars">
+                                <svg id="star-1" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                                <svg id="star-2" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                                <svg id="star-3" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                                <svg id="star-4" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main
+        class="hero-section min-h-screen flex items-center relative overflow-hidden pt-20 sm:pt-24 md:pt-30 lg:pt-34 pb-12">
+        <div class="absolute inset-0 z-0 opacity-40 dark:opacity-50">
+            <svg class="absolute top-1/2 left-1/2 w-[200%] h-auto max-w-none -translate-x-1/2 -translate-y-1/2"
+                viewBox="0 0 1440 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g filter="url(#blur)">
+                    <ellipse id="aurora-shape-1" cx="669.5" cy="493.5" rx="550.5" ry="325.5" />
+                    <ellipse id="aurora-shape-2" cx="1063.5" cy="385.5" rx="437.5" ry="247.5" />
+                    <ellipse id="aurora-shape-3" cx="303" cy="621" rx="458" ry="247" />
+                </g>
+                <defs>
+                    <filter id="blur" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox"
+                        color-interpolation-filters="sRGB">
+                        <feGaussianBlur stdDeviation="80" result="effect1_foregroundBlur_288_2713" />
+                    </filter>
+                </defs>
+            </svg>
+        </div>
+
+
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-4 items-center z-10">
+
+            <div class="text-center md:text-left order-2 md:order-1 md:pl-16 lg:pl-20">
+                <h1 class="hero-title text-3xl sm:text-4xl lg:text-5xl font-bold leading-snug lg:leading-tight">
+                    Rencanakan harimu dengan cerdas
+                </h1>
+
+                <p
+                    class="hero-subtitle text-sm sm:text-base md:text-md mt-2 max-w-md mx-auto md:mx-0 md:mt-4 leading-relaxed">
+                    Dapatkan notifikasi cuaca otomatis yang disesuaikan dengan jadwal dan lokasi Anda.
+                </p>
+
+                <div class="mt-2 max-w-xl w-full mx-auto md:mx-0">
+                    <div class="form-container-card p-6 rounded-xl">
+
+                        <div id="email-form-container">
+                            <form id="email-form">
+                                <input id="email-input" type="email" placeholder="Masukkan email Anda" required
+                                    class="form-input form-input-text w-full py-2.5 px-4 rounded-lg text-sm">
+                                <button type="submit"
+                                    class="btn-submit-email w-full mt-3 py-2.5 px-4 rounded-lg font-semibold text-sm">
+                                    Lanjutkan dengan email
+                                </button>
+                            </form>
+
+                            <div class="flex items-center my-4">
+                                <hr class="w-full border-gray-300 dark:border-gray-600">
+                                <span class="px-3 text-xs font-medium text-gray-500 dark:text-gray-400">ATAU</span>
+                                <hr class="w-full border-gray-300 dark:border-gray-600">
+                            </div>
+
+                            <button id="google-login-btn"
+                                class="btn-google w-full flex items-center justify-center gap-3 py-2.5 px-4 rounded-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 48 48">
+                                    <path fill="#FFC107"
+                                        d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z">
+                                    </path>
+                                    <path fill="#FF3D00"
+                                        d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z">
+                                    </path>
+                                    <path fill="#4CAF50"
+                                        d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.223,0-9.657-3.356-11.303-7.918l-6.522,5.025C9.505,39.556,16.227,44,24,44z">
+                                    </path>
+                                    <path fill="#1976D2"
+                                        d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571l6.19,5.238C42.022,36.21,44,30.551,44,24C44,22.659,43.862,21.35,43.611,20.083z">
+                                    </path>
+                                </svg>
+                                <span class="text-sm font-semibold google-btn-text">Lanjutkan dengan Google</span>
+                            </button>
+
+                            <p class="text-xs text-center mt-5" style="color: var(--text-color-secondary);">
+                                Dengan melanjutkan, Anda menyetujui penggunaan layanan Weathrly.
+                            </p>
+                        </div>
+
+                        <div id="verification-form-container" class="hidden text-center">
+                            <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+
+                            <h3 class="mt-4 font-bold text-lg" style="color: var(--text-color-primary);">
+                                Cek Kotak Masuk Anda
+                            </h3>
+
+                            <p class="text-sm mt-2 mb-4" style="color: var(--text-color-secondary);">
+                                Kami telah mengirimkan tautan login ke
+                                <br><strong id="user-email-display" class="font-bold">emailanda@contoh.com</strong>.
+                            </p>
+                            <p class="text-xs" style="color: var(--text-color-secondary);">
+                                Silakan klik tautan tersebut untuk melanjutkan.
+                            </p>
+
+                            <p class="text-xs text-center mt-6">
+                                <button id="resend-email-btn" class="underline"
+                                    style="color: var(--text-color-secondary);">
+                                    Tidak menerima email? Kirim ulang.
+                                </button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="illustration-container relative flex items-center justify-center order-1 md:order-2">
+                <svg viewBox="0 0 400 345" xmlns="http://www.w3.org/2000/svg"
+                    class="w-full max-w-sm sm:max-w-md md:max-w-lg md:w-[100%] lg:w-[110%] h-auto transition-all duration-500 ease-in-out">
+                    <defs>
+                        <linearGradient id="phone-bg-light" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.8" />
+                            <stop offset="100%" stop-color="#E0F2FE" stop-opacity="0.8" />
+                        </linearGradient>
+                        <linearGradient id="phone-bg-dark" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#2D3748" stop-opacity="0.7" />
+                            <stop offset="100%" stop-color="#1A202C" stop-opacity="0.7" />
+                        </linearGradient>
+                        <filter id="soft-glow" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur stdDeviation="10" result="coloredBlur" />
+                            <feMerge>
+                                <feMergeNode in="coloredBlur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                    </defs>
+
+                    <g class="light-logo">
+                        <circle cx="200" cy="180" r="130" fill="#87CEEB" style="filter: blur(3px); opacity: 0.9;" />
+                    </g>
+
+                    <g class="dark-logo" style="display:none;">
+                        <circle cx="200" cy="180" r="130" fill="#172e4d" style="filter: blur(3px); opacity: 0.9;" />
+                    </g>
+
+
+                    <g>
+                        <circle cx="130" cy="110" r="28" fill="#FFD700" opacity="0.9" />
+                        <line x1="130" y1="78" x2="130" y2="58" stroke="#FFD700" stroke-width="4"
+                            stroke-linecap="round" />
+                        <line x1="130" y1="162" x2="130" y2="142" stroke="#FFD700" stroke-width="4"
+                            stroke-linecap="round" />
+                        <line x1="98" y1="110" x2="78" y2="110" stroke="#FFD700" stroke-width="4"
+                            stroke-linecap="round" />
+                        <line x1="182" y1="110" x2="162" y2="110" stroke="#FFD700" stroke-width="4"
+                            stroke-linecap="round" />
+
+                        <path
+                            d="M220 140 a 18 18 0 0 1 0 36 h -36 a 18 18 0 0 1 0 -36 a 13 13 0 0 1 18 -13 a 22 22 0 0 1 22 22"
+                            fill="#FFFFFF" opacity="0.9" transform="translate(0, -25) scale(1.3)" />
+
+                        <g transform="translate(250, 220)">
+                            <path d="M 0 0 C -12 12, 12 12, 0 0 L -6 14 A 8 8 0 1 0 6 14 Z" fill="#67C8FF" opacity="0.9"
+                                transform="translate(30, -5) scale(0.8)" />
+                        </g>
+                        <g transform="translate(250, 220)">
+                            <path d="M 0 0 C -12 12, 12 12, 0 0 L -6 14 A 8 8 0 1 0 6 14 Z" fill="#67C8FF" opacity="0.9"
+                                transform="translate(5, -5) scale(1.1)" />
+                        </g>
+
+                        <g transform="translate(120, 250)">
+                            <circle cx="0" cy="0" r="30" fill="none" stroke="#FFFFFF" stroke-width="4" opacity="0.8" />
+                            <line x1="0" y1="0" x2="0" y2="-20" stroke="#FFFFFF" stroke-width="4"
+                                stroke-linecap="round" />
+                            <line x1="0" y1="0" x2="15" y2="0" stroke="#FFFFFF" stroke-width="4"
+                                stroke-linecap="round" />
+                        </g>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </main>
+
+    <section id="fitur" class="py-20 sm:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold" style="color: var(--text-color-primary);">Fitur Unggulan</h2>
+                <p class="mt-3 text-lg max-w-2xl mx-auto" style="color: var(--text-color-secondary);">
+                    Dirancang untuk membuat hidup Anda lebih mudah, apa pun cuacanya.
+                </p>
+            </div>
+
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <div class="feature-card rounded-2xl p-8 text-center">
+                    <div
+                        class="feature-icon-wrapper w-16 h-16 rounded-full inline-flex items-center justify-center shadow-md mb-6">
+                        <svg class="feature-icon-svg w-8 h-8" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 7V12H17" stroke="#5DA9F8" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path
+                                d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z"
+                                stroke="#5DA9F8" stroke-width="2" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2" style="color: var(--text-color-primary);">Jadwal Rutin
+                        Otomatis</h3>
+                    <p class="text-base" style="color: var(--text-color-secondary);">
+                        Atur jadwal harian atau mingguan Anda, dan biarkan kami yang memantau cuaca untuk Anda.
+                    </p>
+                </div>
+
+                <div class="feature-card rounded-2xl p-8 text-center">
+                    <div
+                        class="feature-icon-wrapper w-16 h-16 rounded-full inline-flex items-center justify-center shadow-md mb-6">
+                        <svg class="feature-icon-svg w-8 h-8" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M18 18.0001C18.7923 18.0001 19.5489 17.7663 20.1517 17.3401C20.7546 16.9138 21.1694 16.3243 21.3259 15.6596C21.4824 14.9949 21.3734 14.2952 21.0181 13.6936C20.6628 13.0919 20.0863 12.6282 19.38 12.3801C19.38 10.1201 18.4682 7.95304 16.8926 6.3774C15.317 4.80177 13.15 3.89001 10.9 3.89001C7.39 4.10001 4.7 6.84001 4.5 10.3501C2.89 10.9101 1.63 12.2901 1.34 14.0001C1.05 15.7101 1.76 17.4201 3.16 18.4501"
+                                stroke="#5DA9F8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M8 18.0001C8.00004 19.0607 8.42131 20.0781 9.17146 20.8283C9.92162 21.5784 10.939 22 12 22C13.061 22 14.0784 21.5784 14.8285 20.8283C15.5787 20.0781 16 19.0607 16 18.0001"
+                                stroke="#5DA9F8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2" style="color: var(--text-color-primary);">Notifikasi Cuaca
+                        Cerdas</h3>
+                    <p class="text-base" style="color: var(--text-color-secondary);">
+                        Terima notifikasi cuaca dengan bahasa yang ramah dan mudah dipahami, bukan data mentah.
+                    </p>
+                </div>
+
+                <div class="feature-card rounded-2xl p-8 text-center">
+                    <div
+                        class="feature-icon-wrapper w-16 h-16 rounded-full inline-flex items-center justify-center shadow-md mb-6">
+                        <svg class="feature-icon-svg w-8 h-8" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                                stroke="#5DA9F8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                fill="none" />
+                            <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke="#5DA9F8" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2" style="color: var(--text-color-primary);">Cakupan Seluruh
+                        Indonesia</h3>
+                    <p class="text-base" style="color: var(--text-color-secondary);">
+                        Dari kota besar hingga daerah terpencil, atur lokasi di mana saja Anda beraktivitas.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="cara_kerja" class="py-20 sm:py-24 overflow-x-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center reveal-hidden">
+                <h2 class="text-3xl font-bold" style="color: var(--text-color-primary);">Bagaimana Weathrly Bekerja?
+                </h2>
+                <p class="mt-3 text-lg max-w-2xl mx-auto" style="color: var(--text-color-secondary);">
+                    Hanya dalam 3 langkah, Anda siap menghadapi hari tanpa khawatir cuaca.
+                </p>
+            </div>
+
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-8">
+
+                <div class="step-card reveal-hidden text-center" style="transition-delay: 100ms;">
+                    <div class="step-icon-container mx-auto">
+                        <svg class="w-10 h-10 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div class="mt-6">
+                        <span class="step-number">Langkah 1</span>
+                        <h3 class="step-title">Daftar Mudah</h3>
+                        <p class="step-description">Mulai dengan mendaftar cepat menggunakan email atau akun Google
+                            Anda.</p>
+                    </div>
+                </div>
+
+                <div class="step-card reveal-hidden text-center" style="transition-delay: 200ms;">
+                    <div class="step-icon-container mx-auto">
+                        <svg class="w-10 h-10 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div class="mt-6">
+                        <span class="step-number">Langkah 2</span>
+                        <h3 class="step-title">Atur Lokasi & Jadwal</h3>
+                        <p class="step-description">Pilih lokasi utama Anda, lalu tambahkan jadwal penting seperti
+                            ‘Pulang Kantor’ atau ‘Olahraga Sore’. Sistem akan otomatis memantau cuaca sesuai rutinitas
+                            Anda.</p>
+                    </div>
+                </div>
+
+                <div class="step-card reveal-hidden text-center" style="transition-delay: 300ms;">
+                    <div class="step-icon-container mx-auto">
+                        <svg class="w-10 h-10 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <div class="mt-6">
+                        <span class="step-number">Langkah 3</span>
+                        <h3 class="step-title">Nikmati Notifikasi Cerdas</h3>
+                        <p class="step-description">Dapatkan pengingat cuaca yang ramah dan mudah dimengerti melalui
+                            Email (gratis), atau WhatsApp & Telegram (khusus Premium).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="harga" class="py-20 sm:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold" style="color: var(--text-color-primary);">Pilih Paket yang Tepat Untukmu
+                </h2>
+                <p class="mt-3 text-lg max-w-2xl mx-auto" style="color: var(--text-color-secondary);">
+                    Mulai gratis selamanya, atau tingkatkan untuk membuka semua fitur canggih.
+                </p>
+            </div>
+
+            <div class="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+
+                <div class="pricing-card rounded-2xl p-8 flex flex-col">
+                    <h3 class="text-2xl font-bold">Free</h3>
+                    <p style="color: var(--text-color-secondary);" class="mt-1 mb-6">Pemantau Satu Titik</p>
+                    <p class="text-4xl font-extrabold mb-6">Gratis</p>
+                    <ul class="space-y-3 mb-8 flex-grow">
+                        <li class="flex items-center">✓ <span class="ml-2">1 Lokasi</span></li>
+                        <li class="flex items-center">✓ <span class="ml-2">1 Jadwal Rutin</span></li>
+                        <li class="flex items-center">✓ <span class="ml-2">Notifikasi Email</span></li>
+                    </ul>
+                    <a href="#" class="btn-outline w-full text-center font-semibold py-3 rounded-lg mt-auto">Coba
+                        Weathrly</a>
+                </div>
+
+                <div class="pricing-card popular rounded-2xl p-8 flex flex-col relative">
+                    <div
+                        class="absolute top-0 left-8 -translate-y-1/2 bg-blue-500 text-white text-xs font-semibold px-4 py-1 rounded-full">
+                        Paling Populer</div>
+                    <h3 class="text-2xl font-semibold" style="color: var(--text-color-primary);">Premium</h3>
+                    <p class="mt-1" style="color: var(--text-color-secondary);">Manager Waktu</p>
+                    <p class="text-4xl font-extrabold my-6" style="color: var(--text-color-primary);">Rp49.000<span
+                            class="text-lg font-medium" style="color: var(--text-color-secondary);">/bulan</span></p>
+                    <ul class="space-y-3 mb-8 flex-grow">
+                        <li class="flex items-center">✓ <span class="ml-2">Hingga 5 Lokasi & Jadwal</span></li>
+                        <li class="flex items-center">✓ <span class="ml-2">Peringatan Cerdas (Smart Alerts)</span></li>
+                        <li class="flex items-center">✓ <span class="ml-2">Sesuaikan Waktu Notifikasi</span></li>
+                        <li class="flex items-center">✓ <span class="ml-2">Ringkasan Cuaca Harian</span></li>
+                        <li class="flex items-center">✓ <span class="ml-2">Notifikasi Telegram</span></li>
+                    </ul>
+                    <a href="#" class="btn-cta w-full text-center text-white font-semibold py-3 rounded-lg mt-auto">Coba
+                        Weathrly</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="tentang" class="py-20 sm:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+                <div class="reveal-hidden flex justify-center lg:justify-end">
+                    <img src="../static/style/image/about.png" alt="Ilustrasi tim Weathrly"
+                        class="rounded-2xl shadow-lg w-full max-w-md lg:max-w-lg transition-transform duration-500 ease-in-out" />
+                </div>
+
+                <div class="reveal-hidden text-center lg:text-left lg:pl-6">
+                    <h2 class="text-3xl font-bold" style="color: var(--text-color-primary);">
+                        Tentang Weathrly
+                    </h2>
+                    <p class="mt-4 text-lg leading-relaxed" style="color: var(--text-color-secondary);">
+                        Weathrly membantu Anda merencanakan hari dengan lebih baik, menghindari gangguan cuaca, dan
+                        menghemat waktu.
+                        Didukung teknologi NLP (Natural Language Processing), setiap notifikasi cuaca dikirim dalam
+                        bahasa yang ramah
+                        dan mudah dipahami, sehingga informasi terasa lebih relevan dengan aktivitas harian Anda.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-center">
+            <div class="flex justify-center items-center">
+                <img src="../static/style/image/logo.png" alt="Logo Weathrly"
+                    class="w-12 h-11 mr-1 rounded-full object-cover">
+                <h3 class="font-bold text-2xl" style="color: var(--text-color-primary);">Weathrly</h3>
+            </div>
+            <p class="mt-2 text-base" style="color: var(--text-color-secondary);">
+                Rencanakan harimu, hadapi cuaca dengan tenang.
+            </p>
+            <p class="mt-2 text-base" style="color: var(--text-color-secondary);">
+                Hubungi kami:
+                <a href="mailto:asisten@weathrly.web.id" class="text-indigo-400 hover:text-indigo-300 underline">
+                    asisten@weathrly.web.id
+                </a>
+            </p>
+            <div class="button-container my-6">
+                <a href="https://x.com/Weathrly_" target="_blank" class="button flex-center"
+                    aria-label="Kunjungi Twitter kami">
+                    <svg viewBox="0 0 24 24" class="btn-svg" width="18px" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z">
+                        </path>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/official_weathrly/" target="_blank" class="button flex-center"
+                    aria-label="Kunjungi Instagram kami">
+                    <svg viewBox="0 0 24 24" class="btn-svg" width="22px" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z">
+                        </path>
+                        <path
+                            d="M18 5C17.4477 5 17 5.44772 17 6C17 6.55228 17.4477 7 18 7C18.5523 7 19 6.55228 19 6C19 5.44772 18.5523 5 18 5Z">
+                        </path>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M1.65396 4.27606C1 5.55953 1 7.23969 1 10.6V13.4C1 16.7603 1 18.4405 1.65396 19.7239C2.2292 20.8529 3.14708 21.7708 4.27606 22.346C5.55953 23 7.23969 23 10.6 23H13.4C16.7603 23 18.4405 23 19.7239 22.346C20.8529 21.7708 21.7708 20.8529 22.346 19.7239C23 18.4405 23 16.7603 23 13.4V10.6C23 7.23969 23 5.55953 22.346 4.27606C21.7708 3.14708 20.8529 2.2292 19.7239 1.65396C18.4405 1 16.7603 1 13.4 1H10.6C7.23969 1 5.55953 1 4.27606 1.65396C3.14708 2.2292 2.2292 3.14708 1.65396 4.27606ZM13.4 3H10.6C8.88684 3 7.72225 3.00156 6.82208 3.0751C5.94524 3.14674 5.49684 3.27659 5.18404 3.43597C4.43139 3.81947 3.81947 4.43139 3.43597 5.18404C3.27659 5.49684 3.14674 5.94524 3.0751 6.82208C3.00156 7.72225 3 8.88684 3 10.6V13.4C3 15.1132 3.00156 16.2777 3.0751 17.1779C3.14674 18.0548 3.27659 18.5032 3.43597 18.816C3.81947 19.5686 4.43139 20.1805 5.18404 20.564C5.49684 20.7234 5.94524 20.8533 6.82208 20.9249C7.72225 20.9984 8.88684 21 10.6 21H13.4C15.1132 21 16.2777 20.9984 17.1779 20.9249C18.0548 20.8533 18.5032 20.7234 18.816 20.564C19.5686 20.1805 20.1805 19.5686 20.564 18.816C20.7234 18.5032 20.8533 18.0548 20.9249 17.1779C20.9984 16.2777 21 15.1132 21 13.4V10.6C21 8.88684 20.9984 7.72225 20.9249 6.82208C20.8533 5.94524 20.7234 5.49684 20.564 5.18404C20.1805 4.43139 19.5686 3.81947 18.816 3.43597C18.5032 3.27659 18.0548 3.14674 17.1779 3.0751C16.2777 3.00156 15.1132 3 13.4 3Z">
+                        </path>
+                    </svg>
+                </a>
+                <a href="https://www.youtube.com/@weathrlyy" target="_blank" class="button flex-center"
+                    aria-label="Kunjungi YouTube kami">
+                    <svg class="btn-svg" width="22px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418 c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768 C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.861-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M10,15.464V8.536L16,12L10,15.464z" />
+                    </svg>
+                </a>
+            </div>
+            <p class="text-sm mt-6" style="color: var(--text-color-secondary);">
+                © 2025 Weathrly. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
+
+    <script type="module" src="../static/style/js/index.js"></script>
+</body>
+
+</html>

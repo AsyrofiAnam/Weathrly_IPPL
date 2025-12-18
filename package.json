@@ -1,0 +1,21 @@
+{
+  "name": "mencoba-pembayaran",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@sendgrid/mail": "^8.1.6",
+    "firebase-admin": "^13.5.0",
+    "jsonwebtoken": "^9.0.2",
+    "node-fetch": "^2.7.0",
+    "telegraf": "^4.16.3",
+    "xendit-node": "^7.0.0"
+  }
+}

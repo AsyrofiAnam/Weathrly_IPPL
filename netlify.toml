@@ -1,0 +1,53 @@
+[build]
+  command = "npm install"
+  functions = "netlify/functions/"
+
+[functions]
+  node_bundler = "esbuild"
+
+# --- Aturan Rewrite URL ---
+
+[[redirects]]
+  # 1. Homepage
+  # Permintaan untuk root (/) akan menyajikan index.html
+  from = "/"
+  to = "/templates/index.html"
+  status = 200
+
+# --- Tambahkan ini DI ATAS redirect /:slug ---
+
+[[redirects]]
+  # Halaman Admin Dashboard
+  from = "/admin"
+  to = "/templates/admin-dashboard.html"
+  status = 200
+
+# ... (kode existing redirect /:slug dan functions lainnya) ...  
+
+[[redirects]]
+  # 2. Halaman Pengaturan (Harus DI ATAS dashboard)
+  # /username/settings -> menyajikan settings.html
+  from = "/:slug/settings"
+  to = "/templates/settings.html"
+  status = 200  
+
+[[redirects]]
+  # 2. [BARU] Aturan URL Cantik untuk Dashboard
+  # Setiap permintaan ke /user/...(apapun) akan menyajikan dashboard.html
+  # ":slug" adalah placeholder dinamis.
+  from = "/:slug"
+  to = "/templates/dashboard.html"
+  status = 200
+
+# --- Penjadwalan Fungsi (Tidak Berubah) ---
+
+[functions."send-weather-alerts"]
+  schedule = "* * * * *"
+
+[functions."5-send-daily-summary"]
+  schedule = "* * * * *"
+
+# --- Otomatisasi Webhook (Tidak Berubah) ---
+
+[build.hooks]
+  post-deploy = "curl -s \"https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/setWebhook?url=${URL}/.netlify/functions/1-bot-webhook/${TELEGRAM_SECRET_PATH}\""
